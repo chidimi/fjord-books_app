@@ -46,6 +46,8 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :test do
@@ -64,4 +66,5 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
 gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
