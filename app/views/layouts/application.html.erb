@@ -9,7 +9,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <p class="navbar-text pull-right">
+    <% if user_signed_in? %>
+      <%= t('views.common.logged in as') %> <strong><%= current_user.email %></strong>
+      <%= link_to t('views.common.edit profile'), edit_user_registration_path, class: 'navbar-link' %> |
+      <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
+    <% else %>
+      <%= link_to t('views.common.sign up'), new_user_registration_path, class: 'navbar-link'  %> |
+      <%= link_to t('views.common.login'), new_user_session_path, class: 'navbar-link'  %>
+    <% end %>
+  </p>
+
   <body>
-    <%= yield %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+      <%= yield %>
   </body>
 </html>
