@@ -1,27 +1,28 @@
 <h1><%= User.model_name.human %></h1>
 
 <table>
-  <thead>
-    <tr>
-      <th><%= User.human_attribute_name(:email) %></th>
-      <th><%= User.human_attribute_name(:name) %></th>
-      <th><%= User.human_attribute_name(:postal_code) %></th>
-      <th><%= User.human_attribute_name(:address) %></th>
-      <th></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th><%= User.human_attribute_name(:email) %></th>
+            <th><%= User.human_attribute_name(:name) %></th>
+            <th><%= User.human_attribute_name(:postal_code) %></th>
+            <th><%= User.human_attribute_name(:address) %></th>
+            <th><%= User.human_attribute_name(:avatar) %></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td><%= user.postal_code %></td>
-        <td><%= user.address %></td>
-        <td><%= link_to t('views.common.show'), user %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= user.postal_code %></td>
+            <td><%= user.address %></td>
+            <td><%= image_tag user.avatar.variant(resize: '50') if user.avatar.attached? %></td>
+            <td><%= link_to t('views.common.show'), user %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <%= paginate @users %>

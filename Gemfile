@@ -37,6 +37,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'debase'
   gem 'faker'
   gem 'i18n_generators'
   gem 'letter_opener_web'
@@ -44,6 +45,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
+  gem 'ruby-debug-ide'
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
 end
@@ -59,6 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'active_storage_validations'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
