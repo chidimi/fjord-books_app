@@ -11,10 +11,10 @@ class User < ApplicationRecord
                                   dependent: :destroy,
                                   inverse_of: :follower
   has_many :passive_relationships, class_name: 'Relationship',
-                                   foreign_key: 'followed_id',
+                                   foreign_key: 'followee_id',
                                    dependent: :destroy,
-                                   inverse_of: :followed
-  has_many :following, through: :active_relationships, source: :followed
+                                   inverse_of: :followee
+  has_many :following, through: :active_relationships, source: :followee
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
@@ -32,10 +32,10 @@ class User < ApplicationRecord
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followee_id: other_user.id).destroy
   end
 
-  def following?(other_user)
+  def is_following?(other_user)
     following.include?(other_user)
   end
 end
