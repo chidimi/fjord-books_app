@@ -8,6 +8,7 @@ ja:
       active_storage/variant_record: アクティブ ストレージ/バリアント レコード  #g
       relationship: 関係  #g
       report: 日報  #g
+      comment: コメント  #g
 
     attributes:
       book:
@@ -15,6 +16,7 @@ ja:
         memo: メモ  #g
         picture: 画像  #g
         title: 題名  #g
+        comments: コメント  #g
 
       user:
         name: 氏名
@@ -69,5 +71,13 @@ ja:
       report:
         content: 内容  #g
         title: 題名  #g
+        created_at: 投稿日時
+        user: :activerecord.models.user  #g
+        comments: コメント  #g
+
+      comment:
+        commentable: :activerecord.models.commentable  #g
+        commentable_type: コメント可能なタイプ  #g
+        content: コメント  #g
         created_at: 投稿日時
         user: :activerecord.models.user  #g
