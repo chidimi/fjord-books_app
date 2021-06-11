@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% commentable.comments.each do |comment| %>
+    <% commentable.comments.includes(:user).each do |comment| %>
       <tr>
         <td><%= comment.user.name.empty? ? comment.user.email : comment.user.name %></td>
         <td><%= comment.content %></td>
