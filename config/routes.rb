@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :reports do
     resources :comments, module: :reports, only: [:create]
   end
