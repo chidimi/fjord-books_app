@@ -10,28 +10,8 @@
   <%= @report.content %>
 </p>
 
-<h1><%= Comment.model_name.human %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= User.model_name.human %></th>
-      <th><%= Comment.human_attribute_name(:content) %></th>
-      <th><%= Comment.human_attribute_name(:created_at) %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @report.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.name.empty? ? comment.user.email : comment.user.name %></td>
-        <td><%= comment.content %></td>
-        <td><%= l(comment.created_at, format: :short) %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: 'comments/comments', locals: {commentable: @report} %>
+<%= render partial: 'comments/form', locals: {commentable: @report} %>
 
 <%= link_to 'Edit', edit_report_path(@report) if @report.user_id == current_user.id %>
 <%= link_to 'Back', reports_path %>
