@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th><%= User.model_name.human %></th>
       <th><%= Report.human_attribute_name(:title) %></th>
       <th><%= Report.human_attribute_name(:content) %></th>
       <th><%= Report.human_attribute_name(:created_at) %></th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @reports.each do |report| %>
       <tr>
+        <td><%= report.user.name.empty? ? report.user.email : report.user.name %>
         <td><%= report.title %></td>
         <td><%= report.content %></td>
         <td><%= l(report.created_at, format: :long) %></td>
