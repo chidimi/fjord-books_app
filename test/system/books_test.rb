@@ -7,8 +7,8 @@ class BooksTest < ApplicationSystemTestCase
     @book = books(:cherry_book)
 
     visit root_url
-    fill_in 'user_email', with: 'alice@example.com'
-    fill_in 'user_password', with: 'password'
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
   end
 
@@ -36,13 +36,13 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_link '編集'
 
-    fill_in 'book_title', with: @book.title
-    fill_in 'book_memo', with: @book.memo
+    fill_in 'タイトル', with: 'code complete'
+    fill_in 'メモ', with: '面白い'
     click_on '更新する'
 
     assert_text '本が更新されました。'
-    assert_text @book.title
-    assert_text @book.memo
+    assert_text 'code complete'
+    assert_text '面白い'
   end
 
   test 'destroying a Book' do

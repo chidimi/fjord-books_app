@@ -4,8 +4,7 @@ one:
   user: alice
   title: 散歩
   content: 散歩した
-  created_at: <%= Time.local(2021, 6, 13, 10, 20, 33) %>
-
+  created_at: <%= Time.zone.local(2021, 6, 13, 10, 20, 33) %>
 # two:
 #   user: two
 #   title: MyString

@@ -7,8 +7,8 @@ class ReportsTest < ApplicationSystemTestCase
     @report = reports(:one)
 
     visit root_url
-    fill_in 'user_email', with: 'alice@example.com'
-    fill_in 'user_password', with: 'password'
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
   end
 
@@ -21,27 +21,27 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: @report.title
-    fill_in '内容', with: @report.content
+    fill_in 'タイトル', with: '散歩した'
+    fill_in '内容', with: '5km歩いた'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
-    assert_text @report.title
-    assert_text @report.content
-    assert_text '2021/06/13'
+    assert_text '散歩した'
+    assert_text '5km歩いた'
+    assert_text Time.zone.now.strftime('%Y/%m/%d')
   end
 
   test 'updating a Report' do
     visit reports_url
     click_link '編集'
 
-    fill_in 'タイトル', with: @report.title
-    fill_in '内容', with: @report.content
+    fill_in 'タイトル', with: '勉強した'
+    fill_in '内容', with: '8時間勉強した'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
-    assert_text @report.title
-    assert_text @report.content
+    assert_text '勉強した'
+    assert_text '8時間勉強した'
   end
 
   test 'destroying a Report' do
