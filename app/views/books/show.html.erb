@@ -22,14 +22,6 @@
 
 <%= render partial: 'comments/comments', locals: {commentable: @book} %>
 
-<% if flash[:error].present? %>
-<ul style="color: red">
-    <% flash[:error].each do |e| %>
-    <li><%= e %></li>
-    <% end %>
-</ul>
-<% end %>
-
 <%= render partial: 'comments/form', locals: {commentable: @book} %>
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
